@@ -5,6 +5,10 @@
 This fork fixes compatibility issues with Shadow DOM components, ensuring the editor works properly in web components and other Shadow DOM contexts.
 Related issue: https://github.com/fastmail/Squire/issues/327
 
+```sh
+  npm i @carboneio/squire-rte
+```
+
 ----------------------
 
 Squire is an HTML5 rich text editor, which provides powerful cross-browser normalisation in a flexible lightweight package (only 16KB of JS after minification and gzip, with no dependencies!).
