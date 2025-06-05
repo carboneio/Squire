@@ -2330,7 +2330,7 @@
     fireEvent(type, detail) {
       let handlers = this._events.get(type);
       if (/^(?:focus|blur)/.test(type)) {
-        const isFocused = this._root === document.activeElement;
+        const isFocused = this._root === this._root.getRootNode().activeElement;
         if (type === "focus") {
           if (!isFocused || this._isFocused) {
             return this;
@@ -2498,8 +2498,10 @@
       return range || null;
     }
     getSelection() {
-      const selection = window.getSelection();
       const root = this._root;
+      const rootNode = root.getRootNode();
+      const objectWithGetSelection = "getSelection" in rootNode ? rootNode : document;
+      const selection = objectWithGetSelection.getSelection() || null;
       let range = null;
       if (this._isFocused && selection && selection.rangeCount) {
         range = selection.getRangeAt(0).cloneRange();
@@ -2530,7 +2532,10 @@
       if (!this._isFocused) {
         this._enableRestoreSelection();
       } else {
-        const selection = window.getSelection();
+        const root = this._root;
+        const rootNode = root.getRootNode();
+        const objectWithGetSelection = "getSelection" in rootNode ? rootNode : document;
+        const selection = objectWithGetSelection.getSelection() || null;
         if (selection) {
           if ("setBaseAndExtent" in Selection.prototype) {
             selection.setBaseAndExtent(

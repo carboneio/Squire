@@ -1,5 +1,12 @@
 # Squire
 
+⚠️ FORK NOTICE ⚠️
+
+This fork fixes compatibility issues with Shadow DOM components, ensuring the editor works properly in web components and other Shadow DOM contexts.
+Related issue: https://github.com/fastmail/Squire/issues/327
+
+----------------------
+
 Squire is an HTML5 rich text editor, which provides powerful cross-browser normalisation in a flexible lightweight package (only 16KB of JS after minification and gzip, with no dependencies!).
 
 It was designed to handle email composition for the [Fastmail](https://www.fastmail.com) web app. The most important consequence of this (and where Squire differs from most other modern rich text editors) is that it must handle arbitrary HTML, because it may be used to forward or quote emails from third-parties and must be able to preserve their HTML without breaking the formatting. This means that it can't use a more structured (but limited) internal data model (as most other modern HTML editors do) and the HTML remains the source-of-truth. The other consequence is excellent handling of multiple levels of blockquotes.

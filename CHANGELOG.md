@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 -   Fix `<BR>`s redundantly inserted into non-empty blocks.
+-   [@carboneio] Fix editor not working properly in Shadow DOM components
 
 ## [2.3.2] - 2024-08-16
 

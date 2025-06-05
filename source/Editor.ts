@@ -361,7 +361,7 @@ class Squire {
         // an infinite loop. So we detect whether we're actually
         // focused/blurred before firing.
         if (/^(?:focus|blur)/.test(type)) {
-            const isFocused = this._root === document.activeElement;
+            const isFocused = this._root === (this._root.getRootNode() as unknown as DocumentOrShadowRoot).activeElement;
             if (type === 'focus') {
                 if (!isFocused || this._isFocused) {
                     return this;
@@ -583,8 +583,11 @@ class Squire {
     }
 
     getSelection(): Range {
-        const selection = window.getSelection();
         const root = this._root;
+        const rootNode = root.getRootNode() as unknown as Document;
+        // In Firefox you have to use document.getSelection, in Chromium you have to use rootNode.getSelection
+        const objectWithGetSelection = 'getSelection' in rootNode ? rootNode : document;
+        const selection = objectWithGetSelection.getSelection() || null;
         let range: Range | null = null;
         // If not focused, always rely on cached selection; another function may
         // have set it but the DOM is not modified until focus again
@@ -624,7 +627,11 @@ class Squire {
         if (!this._isFocused) {
             this._enableRestoreSelection();
         } else {
-            const selection = window.getSelection();
+            const root = this._root;
+            const rootNode = root.getRootNode() as unknown as Document;
+            // In Firefox you have to use document.getSelection, in Chromium you have to use rootNode.getSelection
+            const objectWithGetSelection = 'getSelection' in rootNode ? rootNode : document;
+            const selection = objectWithGetSelection.getSelection() || null;
             if (selection) {
                 if ('setBaseAndExtent' in Selection.prototype) {
                     selection.setBaseAndExtent(
