@@ -11,6 +11,9 @@
         "lint": "eslint source",
         "fix": "eslint --fix source && prettier --write source"
     },
+    "publishConfig": {
+       "access": "public"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/neilj/Squire.git"
