@@ -2511,11 +2511,11 @@ var Squire = class {
         range.setEndBefore(endContainer);
       }
     }
-    if (range && root.contains(range.commonAncestorContainer)) {
+    if (range && rootNode.contains(range.commonAncestorContainer)) {
       this._lastSelection = range;
     } else {
       range = this._lastSelection;
-      if (!document.contains(range.commonAncestorContainer)) {
+      if (!rootNode.contains(range.commonAncestorContainer)) {
         range = null;
       }
     }

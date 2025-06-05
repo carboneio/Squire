@@ -6,8 +6,11 @@ This fork fixes compatibility issues with Shadow DOM components, ensuring the ed
 Related issue: https://github.com/fastmail/Squire/issues/327
 
 ```sh
-  npm i @carboneio/squire-rte
+  # Current latest stable version
+  npm i @carboneio/squire-rte@2.3.3-alpha.1
 ```
+
+We use the pre-release tag 'alpha' to publish multiple versions while staying in sync with the original package's major.minor.patch version.
 
 ----------------------
 

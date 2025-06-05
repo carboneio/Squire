@@ -603,13 +603,13 @@ class Squire {
                 range.setEndBefore(endContainer);
             }
         }
-        if (range && root.contains(range.commonAncestorContainer)) {
+        if (range && rootNode.contains(range.commonAncestorContainer)) {
             this._lastSelection = range;
         } else {
             range = this._lastSelection;
             // Check the editor is in the live document; if not, the range has
             // probably been rewritten by the browser and is bogus
-            if (!document.contains(range.commonAncestorContainer)) {
+            if (!rootNode.contains(range.commonAncestorContainer)) {
                 range = null;
             }
         }
