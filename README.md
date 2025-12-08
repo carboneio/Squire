@@ -7,6 +7,8 @@ Related issue: https://github.com/fastmail/Squire/issues/327
 
 ```sh
   # Current latest stable version
+  npm i @carboneio/squire-rte@2.4.1-alpha.1
+  # Previous available versions:
   npm i @carboneio/squire-rte@2.3.3-alpha.1
 ```
 
